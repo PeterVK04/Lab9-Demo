@@ -6,7 +6,13 @@ def encoder(password):
     return result
 
 # decryption function
-
+def decoder(encodedPassword):
+    decodedPassword = ''
+    for i in range(len(encodedPassword)):
+        newDigit = str((int(encodedPassword[i]) - 3) % 10)
+        decodedPassword += newDigit
+    return decodedPassword
+    
 def main():
     print('Menu' +
     '\n -------------')
@@ -21,6 +27,9 @@ def main():
         if choice == 1:
             password = input('Please enter your passweord to encode: ')
             encodedPassword = encoder(password)
+        if choice == 2:
+            decodedPassword = decoder(encodedPassword)
+            print('The encoded password is: ' + str(encodedPassword) + ', and the decoded password is ' + str(decodedPassword))
         if choice == 3:
             return
 
